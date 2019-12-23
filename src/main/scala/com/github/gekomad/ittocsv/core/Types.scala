@@ -25,16 +25,16 @@ object Types {
     implicit val apply0: Cons[Youtube]  = Youtube
     implicit val apply1: Cons[Facebook] = Facebook
     implicit val apply2: Cons[Twitter]  = Twitter
-
-    implicit val validatorYoutube: Validator[Youtube]   = Validator[Youtube](com.github.gekomad.regexcollection.Collection.validatorYoutube.regexp, Youtube.toString)
-    implicit val validatorFacebook: Validator[Facebook] = Validator[Facebook](com.github.gekomad.regexcollection.Collection.validatorFacebook.regexp, Facebook.toString)
-    implicit val validatorTwitter: Validator[Twitter]   = Validator[Twitter](com.github.gekomad.regexcollection.Collection.validatorTwitter.regexp, Twitter.toString)
+    import com.github.gekomad.regexcollection.Collection._
+//    given Validator[Youtube]   = Validator[Youtube](com.github.gekomad.regexcollection.Collection.validatorYoutube.regexp, Youtube.toString)
+//    implicit val validatorFacebook: Validator[Facebook] = Validator[Facebook](com.github.gekomad.regexcollection.Collection.validatorFacebook.regexp, Facebook.toString)
+//    implicit val validatorTwitter: Validator[Twitter]   = Validator[Twitter](com.github.gekomad.regexcollection.Collection.validatorTwitter.regexp, Twitter.toString)
 
     // MACAddressOps
     case class MACAddress(value: String)
     implicit val apply3: Cons[MACAddress] = MACAddress
 
-    implicit val validatorMACAddress: Validator[MACAddress] = Validator[MACAddress](com.github.gekomad.regexcollection.Collection.validatorMACAddress.regexp, MACAddress.toString)
+//    implicit val validatorMACAddress: Validator[MACAddress] = Validator[MACAddress](com.github.gekomad.regexcollection.Collection.validatorMACAddress.regexp, MACAddress.toString)
 
     // EmailOps
 
@@ -45,9 +45,9 @@ object Types {
     case class Email(email: String)
     case class Email1(email: String)
     case class EmailSimple(emailSimple: String)
-    implicit val validatorEmail1: Validator[Email1]           = Validator[Email1](com.github.gekomad.regexcollection.Collection.validatorEmail1.regexp, Email1.toString)
-    implicit val validatorEmail: Validator[Email]             = Validator[Email](com.github.gekomad.regexcollection.Collection.validatorEmail.regexp, Email.toString)
-    implicit val validatorEmailSimple: Validator[EmailSimple] = Validator[EmailSimple](com.github.gekomad.regexcollection.Collection.validatorEmailSimple.regexp, EmailSimple.toString)
+//    implicit val validatorEmail1: Validator[Email1]           = Validator[Email1](com.github.gekomad.regexcollection.Collection.validatorEmail1.regexp, Email1.toString)
+//    implicit val validatorEmail: Validator[Email]             = Validator[Email](com.github.gekomad.regexcollection.Collection.validatorEmail.regexp, Email.toString)
+//    implicit val validatorEmailSimple: Validator[EmailSimple] = Validator[EmailSimple](com.github.gekomad.regexcollection.Collection.validatorEmailSimple.regexp, EmailSimple.toString)
 
     // HexOps
     case class HEX(value: String)
@@ -60,10 +60,10 @@ object Types {
     implicit val apply8: Cons[HEX2] = HEX2
     implicit val apply9: Cons[HEX3] = HEX3
 
-    implicit val validatorHEX: Validator[HEX]   = Validator[HEX](com.github.gekomad.regexcollection.Collection.validatorHEX.regexp, HEX.toString)
-    implicit val validatorHEX1: Validator[HEX1] = Validator[HEX1](com.github.gekomad.regexcollection.Collection.validatorHEX1.regexp, HEX1.toString)
-    implicit val validatorHEX2: Validator[HEX2] = Validator[HEX2](com.github.gekomad.regexcollection.Collection.validatorHEX2.regexp, HEX2.toString)
-    implicit val validatorHEX3: Validator[HEX3] = Validator[HEX3](com.github.gekomad.regexcollection.Collection.validatorHEX3.regexp, HEX3.toString)
+//    implicit val validatorHEX: Validator[HEX]   = Validator[HEX](com.github.gekomad.regexcollection.Collection.validatorHEX.regexp, HEX.toString)
+//    implicit val validatorHEX1: Validator[HEX1] = Validator[HEX1](com.github.gekomad.regexcollection.Collection.validatorHEX1.regexp, HEX1.toString)
+//    implicit val validatorHEX2: Validator[HEX2] = Validator[HEX2](com.github.gekomad.regexcollection.Collection.validatorHEX2.regexp, HEX2.toString)
+//    implicit val validatorHEX3: Validator[HEX3] = Validator[HEX3](com.github.gekomad.regexcollection.Collection.validatorHEX3.regexp, HEX3.toString)
 
     // UrlOps
     case class URL(value: String)
@@ -84,19 +84,19 @@ object Types {
     implicit val apply16: Cons[FTP2]   = FTP2
     implicit val apply17: Cons[Domain] = Domain
 
-    implicit val validatorURL: Validator[URL]       = Validator[URL](com.github.gekomad.regexcollection.Collection.validatorURL.regexp, URL.toString)
-    implicit val validatorURL1: Validator[URL1]     = Validator[URL1](com.github.gekomad.regexcollection.Collection.validatorURL1.regexp, URL1.toString)
-    implicit val validatorURL2: Validator[URL2]     = Validator[URL2](com.github.gekomad.regexcollection.Collection.validatorURL2.regexp, URL2.toString)
-    implicit val validatorURL3: Validator[URL3]     = Validator[URL3](com.github.gekomad.regexcollection.Collection.validatorURL3.regexp, URL3.toString)
-    implicit val validatorFTP: Validator[FTP]       = Validator[FTP](com.github.gekomad.regexcollection.Collection.validatorFTP.regexp, FTP.toString)
-    implicit val validatorFTP1: Validator[FTP1]     = Validator[FTP1](com.github.gekomad.regexcollection.Collection.validatorFTP1.regexp, FTP1.toString)
-    implicit val validatorFTP2: Validator[FTP2]     = Validator[FTP2](com.github.gekomad.regexcollection.Collection.validatorFTP2.regexp, FTP2.toString)
-    implicit val validatorDomain: Validator[Domain] = Validator[Domain](com.github.gekomad.regexcollection.Collection.validatorDomain.regexp, Domain.toString)
+//    implicit val validatorURL: Validator[URL]       = Validator[URL](com.github.gekomad.regexcollection.Collection.validatorURL.regexp, URL.toString)
+//    implicit val validatorURL1: Validator[URL1]     = Validator[URL1](com.github.gekomad.regexcollection.Collection.validatorURL1.regexp, URL1.toString)
+//    implicit val validatorURL2: Validator[URL2]     = Validator[URL2](com.github.gekomad.regexcollection.Collection.validatorURL2.regexp, URL2.toString)
+//    implicit val validatorURL3: Validator[URL3]     = Validator[URL3](com.github.gekomad.regexcollection.Collection.validatorURL3.regexp, URL3.toString)
+//    implicit val validatorFTP: Validator[FTP]       = Validator[FTP](com.github.gekomad.regexcollection.Collection.validatorFTP.regexp, FTP.toString)
+//    implicit val validatorFTP1: Validator[FTP1]     = Validator[FTP1](com.github.gekomad.regexcollection.Collection.validatorFTP1.regexp, FTP1.toString)
+//    implicit val validatorFTP2: Validator[FTP2]     = Validator[FTP2](com.github.gekomad.regexcollection.Collection.validatorFTP2.regexp, FTP2.toString)
+//    implicit val validatorDomain: Validator[Domain] = Validator[Domain](com.github.gekomad.regexcollection.Collection.validatorDomain.regexp, Domain.toString)
 
     // MD5Ops
     implicit val apply18: Cons[MD5] = MD5
     case class MD5(url: String)
-    implicit val validatorMD5: Validator[MD5] = Validator[MD5](com.github.gekomad.regexcollection.Collection.validatorMD5.regexp, MD5.toString)
+//    implicit val validatorMD5: Validator[MD5] = Validator[MD5](com.github.gekomad.regexcollection.Collection.validatorMD5.regexp, MD5.toString)
 
     // SHAOps
     implicit val apply19: Cons[SHA1]   = SHA1
@@ -105,8 +105,8 @@ object Types {
     case class SHA1(value: String)
     case class SHA256(value: String)
 
-    implicit val validatorSHA1: Validator[SHA1]     = Validator[SHA1](com.github.gekomad.regexcollection.Collection.validatorSHA1.regexp, SHA1.toString)
-    implicit val validatorSHA256: Validator[SHA256] = Validator[SHA256](com.github.gekomad.regexcollection.Collection.validatorSHA256.regexp, SHA256.toString)
+//    implicit val validatorSHA1: Validator[SHA1]     = Validator[SHA1](com.github.gekomad.regexcollection.Collection.validatorSHA1.regexp, SHA1.toString)
+//    implicit val validatorSHA256: Validator[SHA256] = Validator[SHA256](com.github.gekomad.regexcollection.Collection.validatorSHA256.regexp, SHA256.toString)
 
     // IPOps
     implicit val apply21: Cons[IP]  = IP
@@ -115,15 +115,15 @@ object Types {
     case class IP(value: String)
     case class IP6(value: String)
 
-    implicit val validatorIP: Validator[IP]   = Validator[IP](com.github.gekomad.regexcollection.Collection.validatorIP.regexp, IP.toString)
-    implicit val validatorIP6: Validator[IP6] = Validator[IP6](com.github.gekomad.regexcollection.Collection.validatorIP_6.regexp, IP6.toString)
+//    implicit val validatorIP: Validator[IP]   = Validator[IP](com.github.gekomad.regexcollection.Collection.validatorIP.regexp, IP.toString)
+//    implicit val validatorIP6: Validator[IP6] = Validator[IP6](com.github.gekomad.regexcollection.Collection.validatorIP_6.regexp, IP6.toString)
 
     // BitcoinAddOps
     implicit def apply23: Cons[BitcoinAdd] = BitcoinAdd
 
     case class BitcoinAdd(value: String)
 
-    implicit val validatorBitcoinAdd: Validator[BitcoinAdd] = Validator[BitcoinAdd](com.github.gekomad.regexcollection.Collection.validatorBitcoinAdd.regexp, BitcoinAdd.toString)
+//    implicit val validatorBitcoinAdd: Validator[BitcoinAdd] = Validator[BitcoinAdd](com.github.gekomad.regexcollection.Collection.validatorBitcoinAdd.regexp, BitcoinAdd.toString)
 
     // PhonesOps
     implicit val apply24: Cons[USphoneNumber]      = USphoneNumber
@@ -134,10 +134,10 @@ object Types {
     case class ItalianMobilePhone(value: String)
     case class ItalianPhone(value: String)
 
-    implicit val validatorUSphoneNumber: Validator[USphoneNumber] = Validator[USphoneNumber](com.github.gekomad.regexcollection.Collection.validatorUSphoneNumber.regexp, USphoneNumber.toString)
-    implicit val validatorItalianMobilePhone: Validator[ItalianMobilePhone] =
-      Validator[ItalianMobilePhone](com.github.gekomad.regexcollection.Collection.validatorItalianMobilePhone.regexp, ItalianMobilePhone.toString)
-    implicit val validatorItalianPhone: Validator[ItalianPhone] = Validator[ItalianPhone](com.github.gekomad.regexcollection.Collection.validatorItalianPhone.regexp, ItalianPhone.toString)
+//    implicit val validatorUSphoneNumber: Validator[USphoneNumber] = Validator[USphoneNumber](com.github.gekomad.regexcollection.Collection.validatorUSphoneNumber.regexp, USphoneNumber.toString)
+//    implicit val validatorItalianMobilePhone: Validator[ItalianMobilePhone] =
+//      Validator[ItalianMobilePhone](com.github.gekomad.regexcollection.Collection.validatorItalianMobilePhone.regexp, ItalianMobilePhone.toString)
+//    implicit val validatorItalianPhone: Validator[ItalianPhone] = Validator[ItalianPhone](com.github.gekomad.regexcollection.Collection.validatorItalianPhone.regexp, ItalianPhone.toString)
 
     // TimeOps
     implicit val apply27: Cons[Time24] = Time24
@@ -162,21 +162,21 @@ object Types {
     case class DMY4(value: String)
     case class Time(value: String)
 
-    implicit val validatorTime24: Validator[Time24] = Validator[Time24](com.github.gekomad.regexcollection.Collection.validatorTime24.regexp, Time24.toString)
-    implicit val validatorMDY: Validator[MDY]       = Validator[MDY](com.github.gekomad.regexcollection.Collection.validatorMDY.regexp, MDY.toString)
-    implicit val validatorMDY2: Validator[MDY2]     = Validator[MDY2](com.github.gekomad.regexcollection.Collection.validatorMDY2.regexp, MDY2.toString)
-    implicit val validatorMDY3: Validator[MDY3]     = Validator[MDY3](com.github.gekomad.regexcollection.Collection.validatorMDY3.regexp, MDY3.toString)
-    implicit val validatorMDY4: Validator[MDY4]     = Validator[MDY4](com.github.gekomad.regexcollection.Collection.validatorMDY4.regexp, MDY4.toString)
-    implicit val validatorDMY: Validator[DMY]       = Validator[DMY](com.github.gekomad.regexcollection.Collection.validatorDMY.regexp, DMY.toString)
-    implicit val validatorDMY2: Validator[DMY2]     = Validator[DMY2](com.github.gekomad.regexcollection.Collection.validatorDMY2.regexp, DMY2.toString)
-    implicit val validatorDMY3: Validator[DMY3]     = Validator[DMY3](com.github.gekomad.regexcollection.Collection.validatorDMY3.regexp, DMY3.toString)
-    implicit val validatorDMY4: Validator[DMY4]     = Validator[DMY4](com.github.gekomad.regexcollection.Collection.validatorDMY4.regexp, DMY4.toString)
-    implicit val validatorTime: Validator[Time]     = Validator[Time](com.github.gekomad.regexcollection.Collection.validatorTime.regexp, Time.toString)
+//    implicit val validatorTime24: Validator[Time24] = Validator[Time24](com.github.gekomad.regexcollection.Collection.validatorTime24.regexp, Time24.toString)
+//    implicit val validatorMDY: Validator[MDY]       = Validator[MDY](com.github.gekomad.regexcollection.Collection.validatorMDY.regexp, MDY.toString)
+//    implicit val validatorMDY2: Validator[MDY2]     = Validator[MDY2](com.github.gekomad.regexcollection.Collection.validatorMDY2.regexp, MDY2.toString)
+//    implicit val validatorMDY3: Validator[MDY3]     = Validator[MDY3](com.github.gekomad.regexcollection.Collection.validatorMDY3.regexp, MDY3.toString)
+//    implicit val validatorMDY4: Validator[MDY4]     = Validator[MDY4](com.github.gekomad.regexcollection.Collection.validatorMDY4.regexp, MDY4.toString)
+//    implicit val validatorDMY: Validator[DMY]       = Validator[DMY](com.github.gekomad.regexcollection.Collection.validatorDMY.regexp, DMY.toString)
+//    implicit val validatorDMY2: Validator[DMY2]     = Validator[DMY2](com.github.gekomad.regexcollection.Collection.validatorDMY2.regexp, DMY2.toString)
+//    implicit val validatorDMY3: Validator[DMY3]     = Validator[DMY3](com.github.gekomad.regexcollection.Collection.validatorDMY3.regexp, DMY3.toString)
+//    implicit val validatorDMY4: Validator[DMY4]     = Validator[DMY4](com.github.gekomad.regexcollection.Collection.validatorDMY4.regexp, DMY4.toString)
+//    implicit val validatorTime: Validator[Time]     = Validator[Time](com.github.gekomad.regexcollection.Collection.validatorTime.regexp, Time.toString)
 
     // CrontabOps
     case class Cron(value: String)
     implicit val apply37: Cons[Cron]            = Cron
-    implicit val validatorCron: Validator[Cron] = Validator[Cron](com.github.gekomad.regexcollection.Collection.validatorCron.regexp, Cron.toString)
+//    implicit val validatorCron: Validator[Cron] = Validator[Cron](com.github.gekomad.regexcollection.Collection.validatorCron.regexp, Cron.toString)
 
     // CodesOps
 
@@ -202,17 +202,17 @@ object Types {
     implicit val apply542: Cons[USstreetNumber]   = USstreetNumber
     implicit val apply543: Cons[GermanStreet]     = GermanStreet
 
-    implicit val validatorItalianFiscalCode: Validator[ItalianFiscalCode] =
-      Validator[ItalianFiscalCode](com.github.gekomad.regexcollection.Collection.validatorItalianFiscalCode.regexp, ItalianFiscalCode.toString)
-    implicit val validatorItalianVAT: Validator[ItalianVAT]         = Validator[ItalianVAT](com.github.gekomad.regexcollection.Collection.validatorItalianVAT.regexp, ItalianVAT.toString)
-    implicit val validatorItalianIban: Validator[ItalianIban]       = Validator[ItalianIban](com.github.gekomad.regexcollection.Collection.validatorItalianIban.regexp, ItalianIban.toString)
-    implicit val validatorUSstates: Validator[USstates]             = Validator[USstates](com.github.gekomad.regexcollection.Collection.validatorUSstates.regexp, USstates.toString)
-    implicit val validatorUSstates1: Validator[USstates1]           = Validator[USstates1](com.github.gekomad.regexcollection.Collection.validatorUSstates1.regexp, USstates1.toString)
-    implicit val validatorUSZipCode: Validator[USZipCode]           = Validator[USZipCode](com.github.gekomad.regexcollection.Collection.validatorUSZipCode.regexp, USZipCode.toString)
-    implicit val validatorItalianZipCode: Validator[ItalianZipCode] = Validator[ItalianZipCode](com.github.gekomad.regexcollection.Collection.validatorItalianZipCode.regexp, ItalianZipCode.toString)
-    implicit val validatorUSstreets: Validator[USstreets]           = Validator[USstreets](com.github.gekomad.regexcollection.Collection.validatorUSstreets.regexp, USstreets.toString)
-    implicit val validatorUSstreetNumber: Validator[USstreetNumber] = Validator[USstreetNumber](com.github.gekomad.regexcollection.Collection.validatorUSstreetNumber.regexp, USstreetNumber.toString)
-    implicit val validatorGermanStreet: Validator[GermanStreet]     = Validator[GermanStreet](com.github.gekomad.regexcollection.Collection.validatorGermanStreet.regexp, GermanStreet.toString)
+//    implicit val validatorItalianFiscalCode: Validator[ItalianFiscalCode] =
+//      Validator[ItalianFiscalCode](com.github.gekomad.regexcollection.Collection.validatorItalianFiscalCode.regexp, ItalianFiscalCode.toString)
+//    implicit val validatorItalianVAT: Validator[ItalianVAT]         = Validator[ItalianVAT](com.github.gekomad.regexcollection.Collection.validatorItalianVAT.regexp, ItalianVAT.toString)
+//    implicit val validatorItalianIban: Validator[ItalianIban]       = Validator[ItalianIban](com.github.gekomad.regexcollection.Collection.validatorItalianIban.regexp, ItalianIban.toString)
+//    implicit val validatorUSstates: Validator[USstates]             = Validator[USstates](com.github.gekomad.regexcollection.Collection.validatorUSstates.regexp, USstates.toString)
+//    implicit val validatorUSstates1: Validator[USstates1]           = Validator[USstates1](com.github.gekomad.regexcollection.Collection.validatorUSstates1.regexp, USstates1.toString)
+//    implicit val validatorUSZipCode: Validator[USZipCode]           = Validator[USZipCode](com.github.gekomad.regexcollection.Collection.validatorUSZipCode.regexp, USZipCode.toString)
+//    implicit val validatorItalianZipCode: Validator[ItalianZipCode] = Validator[ItalianZipCode](com.github.gekomad.regexcollection.Collection.validatorItalianZipCode.regexp, ItalianZipCode.toString)
+//    implicit val validatorUSstreets: Validator[USstreets]           = Validator[USstreets](com.github.gekomad.regexcollection.Collection.validatorUSstreets.regexp, USstreets.toString)
+//    implicit val validatorUSstreetNumber: Validator[USstreetNumber] = Validator[USstreetNumber](com.github.gekomad.regexcollection.Collection.validatorUSstreetNumber.regexp, USstreetNumber.toString)
+//    implicit val validatorGermanStreet: Validator[GermanStreet]     = Validator[GermanStreet](com.github.gekomad.regexcollection.Collection.validatorGermanStreet.regexp, GermanStreet.toString)
 
     // ConcurrencyOps
     case class UsdCurrency(value: String)
@@ -223,9 +223,9 @@ object Types {
     implicit val apply42: Cons[EurCurrency] = EurCurrency
     implicit val apply43: Cons[YenCurrency] = YenCurrency
 
-    implicit val validatorUsdCurrency: Validator[UsdCurrency] = Validator[UsdCurrency](com.github.gekomad.regexcollection.Collection.validatorUsdCurrency.regexp, UsdCurrency.toString)
-    implicit val validatorEurCurrency: Validator[EurCurrency] = Validator[EurCurrency](com.github.gekomad.regexcollection.Collection.validatorEurCurrency.regexp, EurCurrency.toString)
-    implicit val validatorYenCurrency: Validator[YenCurrency] = Validator[YenCurrency](com.github.gekomad.regexcollection.Collection.validatorYenCurrency.regexp, YenCurrency.toString)
+//    implicit val validatorUsdCurrency: Validator[UsdCurrency] = Validator[UsdCurrency](com.github.gekomad.regexcollection.Collection.validatorUsdCurrency.regexp, UsdCurrency.toString)
+//    implicit val validatorEurCurrency: Validator[EurCurrency] = Validator[EurCurrency](com.github.gekomad.regexcollection.Collection.validatorEurCurrency.regexp, EurCurrency.toString)
+//    implicit val validatorYenCurrency: Validator[YenCurrency] = Validator[YenCurrency](com.github.gekomad.regexcollection.Collection.validatorYenCurrency.regexp, YenCurrency.toString)
 
     // StringsOps
     case class NotASCII(value: String)
@@ -240,18 +240,18 @@ object Types {
     implicit val apply443: Cons[StringAndNumber] = StringAndNumber
     implicit val apply444: Cons[AsciiString]     = AsciiString
 
-    implicit val validatorNotASCII: Validator[NotASCII]       = Validator[NotASCII](com.github.gekomad.regexcollection.Collection.validatorNotASCII.regexp, NotASCII.toString)
-    implicit val validatorSingleChar: Validator[SingleChar]   = Validator[SingleChar](com.github.gekomad.regexcollection.Collection.validatorSingleChar.regexp, SingleChar.toString)
-    implicit val validatorAZString: Validator[AZString]       = Validator[AZString](com.github.gekomad.regexcollection.Collection.validatorAZString.regexp, AZString.toString)
-    implicit val validatorAsciiString: Validator[AsciiString] = Validator[AsciiString](com.github.gekomad.regexcollection.Collection.validatorAsciiString.regexp, AsciiString.toString)
-    implicit val validatorStringAndNumber: Validator[StringAndNumber] =
-      Validator[StringAndNumber](com.github.gekomad.regexcollection.Collection.validatorStringAndNumber.regexp, StringAndNumber.toString)
+//    implicit val validatorNotASCII: Validator[NotASCII]       = Validator[NotASCII](com.github.gekomad.regexcollection.Collection.validatorNotASCII.regexp, NotASCII.toString)
+//    implicit val validatorSingleChar: Validator[SingleChar]   = Validator[SingleChar](com.github.gekomad.regexcollection.Collection.validatorSingleChar.regexp, SingleChar.toString)
+//    implicit val validatorAZString: Validator[AZString]       = Validator[AZString](com.github.gekomad.regexcollection.Collection.validatorAZString.regexp, AZString.toString)
+//    implicit val validatorAsciiString: Validator[AsciiString] = Validator[AsciiString](com.github.gekomad.regexcollection.Collection.validatorAsciiString.regexp, AsciiString.toString)
+//    implicit val validatorStringAndNumber: Validator[StringAndNumber] =
+//      Validator[StringAndNumber](com.github.gekomad.regexcollection.Collection.validatorStringAndNumber.regexp, StringAndNumber.toString)
 
     // LogsOps
     case class ApacheError(value: String)
     implicit val apply45: Cons[ApacheError] = ApacheError
 
-    implicit val validatorApacheError: Validator[ApacheError] = Validator[ApacheError](com.github.gekomad.regexcollection.Collection.validatorApacheError.regexp, ApacheError.toString)
+//    implicit val validatorApacheError: Validator[ApacheError] = Validator[ApacheError](com.github.gekomad.regexcollection.Collection.validatorApacheError.regexp, ApacheError.toString)
 
     // NumbersOps
     case class Number1(value: String)
@@ -272,14 +272,14 @@ object Types {
     implicit val apply493: Cons[Celsius]      = Celsius
     implicit val apply494: Cons[Fahrenheit]   = Fahrenheit
 
-    implicit val validatorNumber1: Validator[Number1]           = Validator[Number1](com.github.gekomad.regexcollection.Collection.validatorNumber1.regexp, Number1.toString)
-    implicit val validatorUnsigned32: Validator[Unsigned32]     = Validator[Unsigned32](com.github.gekomad.regexcollection.Collection.validatorUnsigned32.regexp, Unsigned32.toString)
-    implicit val validatorSigned: Validator[Signed]             = Validator[Signed](com.github.gekomad.regexcollection.Collection.validatorSigned.regexp, Signed.toString)
-    implicit val validatorPercentage: Validator[Percentage]     = Validator[Percentage](com.github.gekomad.regexcollection.Collection.validatorPercentage.regexp, Percentage.toString)
-    implicit val validatorScientific: Validator[Scientific]     = Validator[Scientific](com.github.gekomad.regexcollection.Collection.validatorScientific.regexp, Scientific.toString)
-    implicit val validatorSingleNumber: Validator[SingleNumber] = Validator[SingleNumber](com.github.gekomad.regexcollection.Collection.validatorSingleNumber.regexp, SingleNumber.toString)
-    implicit val validatorCelsius: Validator[Celsius]           = Validator[Celsius](com.github.gekomad.regexcollection.Collection.validatorCelsius.regexp, Celsius.toString)
-    implicit val validatorFahrenheit: Validator[Fahrenheit]     = Validator[Fahrenheit](com.github.gekomad.regexcollection.Collection.validatorFahrenheit.regexp, Fahrenheit.toString)
+//    implicit val validatorNumber1: Validator[Number1]           = Validator[Number1](com.github.gekomad.regexcollection.Collection.validatorNumber1.regexp, Number1.toString)
+//    implicit val validatorUnsigned32: Validator[Unsigned32]     = Validator[Unsigned32](com.github.gekomad.regexcollection.Collection.validatorUnsigned32.regexp, Unsigned32.toString)
+//    implicit val validatorSigned: Validator[Signed]             = Validator[Signed](com.github.gekomad.regexcollection.Collection.validatorSigned.regexp, Signed.toString)
+//    implicit val validatorPercentage: Validator[Percentage]     = Validator[Percentage](com.github.gekomad.regexcollection.Collection.validatorPercentage.regexp, Percentage.toString)
+//    implicit val validatorScientific: Validator[Scientific]     = Validator[Scientific](com.github.gekomad.regexcollection.Collection.validatorScientific.regexp, Scientific.toString)
+//    implicit val validatorSingleNumber: Validator[SingleNumber] = Validator[SingleNumber](com.github.gekomad.regexcollection.Collection.validatorSingleNumber.regexp, SingleNumber.toString)
+//    implicit val validatorCelsius: Validator[Celsius]           = Validator[Celsius](com.github.gekomad.regexcollection.Collection.validatorCelsius.regexp, Celsius.toString)
+//    implicit val validatorFahrenheit: Validator[Fahrenheit]     = Validator[Fahrenheit](com.github.gekomad.regexcollection.Collection.validatorFahrenheit.regexp, Fahrenheit.toString)
 
     // CoordinatesOps
     case class Coordinate(value: String)
@@ -290,9 +290,9 @@ object Types {
     implicit val apply51: Cons[Coordinate1] = Coordinate1
     implicit val apply52: Cons[Coordinate2] = Coordinate2
 
-    implicit val validatorCoordinate: Validator[Coordinate]   = Validator[Coordinate](com.github.gekomad.regexcollection.Collection.validatorCoordinate.regexp, Coordinate.toString)
-    implicit val validatorCoordinate1: Validator[Coordinate1] = Validator[Coordinate1](com.github.gekomad.regexcollection.Collection.validatorCoordinate1.regexp, Coordinate1.toString)
-    implicit val validatorCoordinate2: Validator[Coordinate2] = Validator[Coordinate2](com.github.gekomad.regexcollection.Collection.validatorCoordinate2.regexp, Coordinate2.toString)
+//    implicit val validatorCoordinate: Validator[Coordinate]   = Validator[Coordinate](com.github.gekomad.regexcollection.Collection.validatorCoordinate.regexp, Coordinate.toString)
+//    implicit val validatorCoordinate1: Validator[Coordinate1] = Validator[Coordinate1](com.github.gekomad.regexcollection.Collection.validatorCoordinate1.regexp, Coordinate1.toString)
+//    implicit val validatorCoordinate2: Validator[Coordinate2] = Validator[Coordinate2](com.github.gekomad.regexcollection.Collection.validatorCoordinate2.regexp, Coordinate2.toString)
 
   }
 }

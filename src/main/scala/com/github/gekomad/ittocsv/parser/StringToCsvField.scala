@@ -47,13 +47,20 @@ object StringToCsvField {
         string match {
           case "" => if (csvFormatter.quoteEmpty || csvFormatter.forceQuote) s"$q$q" else string
           case s =>
-            var c             = 0
+            var c             = 1
             var containsQuote = false
 
-            do {
+//            do {
+//              if (s(c) == q || s(c) == csvFormat.delimeter || s(c) == CR_char || s(c) == LF_char) containsQuote = true
+//              c = c + 1
+//            } while (!containsQuote && c < s.length)
+
+            if (s(c) == q || s(c) == csvFormat.delimeter || s(c) == CR_char || s(c) == LF_char) containsQuote = true
+
+            while (containsQuote || c >= s.length) {
               if (s(c) == q || s(c) == csvFormat.delimeter || s(c) == CR_char || s(c) == LF_char) containsQuote = true
               c = c + 1
-            } while (!containsQuote && c < s.length)
+            }
 
             val p = if (containsQuote) s.replace(csvFormat.quote.toString, s"$q$q") else s
 
