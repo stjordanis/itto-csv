@@ -17,32 +17,32 @@ object Conversions {
     def to(a: String): Either[ParseFailure, A]
   }
 
-  implicit val toInts: ConvertTo[Int] = (a: String) => tryCatch(a.toInt)(s"$a is not Int")
+  given ConvertTo[Int] = (a: String) => tryCatch(a.toInt)(s"$a is not Int")
 
-  implicit val toDoubles: ConvertTo[Double] = (a: String) => tryCatch(a.toDouble)(s"$a is not Double")
+  given ConvertTo[Double] = (a: String) => tryCatch(a.toDouble)(s"$a is not Double")
 
-  implicit val toBytes: ConvertTo[Byte] = (a: String) => tryCatch(a.toByte)(s"$a is not Byte")
+  given ConvertTo[Byte] = (a: String) => tryCatch(a.toByte)(s"$a is not Byte")
 
-  implicit val toShorts: ConvertTo[Short] = (a: String) => tryCatch(a.toShort)(s"$a is not Short")
+  given ConvertTo[Short] = (a: String) => tryCatch(a.toShort)(s"$a is not Short")
 
-  implicit val toFloats: ConvertTo[Float] = (a: String) => tryCatch(a.toFloat)(s"$a is not Float")
+  given ConvertTo[Float] = (a: String) => tryCatch(a.toFloat)(s"$a is not Float")
 
-  implicit val toLongs: ConvertTo[Long] = (a: String) => tryCatch(a.toLong)(s"$a is not Long")
+  given ConvertTo[Long] = (a: String) => tryCatch(a.toLong)(s"$a is not Long")
 
-  implicit val toChars: ConvertTo[Char] = (a: String) => tryCatch(if (a.length == 1) a(0) else throw new Exception)(s"$a is not Char")
+  given ConvertTo[Char] = (a: String) => tryCatch(if (a.length == 1) a(0) else throw new Exception)(s"$a is not Char")
 
-  implicit val toBooleans: ConvertTo[Boolean] = (a: String) => tryCatch(a.toBoolean)(s"$a is not Boolean")
+  given ConvertTo[Boolean] = (a: String) => tryCatch(a.toBoolean)(s"$a is not Boolean")
 
-  implicit val toUUIDS: ConvertTo[UUID] = (a: String) => tryCatch(UUID.fromString(a))(s"$a is not UUID")
+  given ConvertTo[UUID] = (a: String) => tryCatch(UUID.fromString(a))(s"$a is not UUID")
 
   import java.time._
   import java.time.format.DateTimeFormatter._
 
-  implicit val fromStringToLocalDateTime: String => Either[ParseFailure, LocalDateTime] = { s =>
+  given (String => Either[ParseFailure, LocalDateTime]) = { s =>
     tryCatch(LocalDateTime.parse(s, ISO_LOCAL_DATE_TIME))(s"Not a LocalDataTime $s")
   }
 
-  implicit def fromGenericOption[A](implicit f: String => Either[ParseFailure, A]): String => Either[ParseFailure, Option[A]] = {
+  given [A](given f: String => Either[ParseFailure, A]): (String => Either[ParseFailure, Option[A]]) = {
 //    import cats.implicits._
     s =>
       if (s == "") Right(None)
@@ -52,21 +52,21 @@ object Conversions {
       }
   }
 
-  implicit val fromStringToLocalDate: ConvertTo[LocalDate] =
+  given ConvertTo[LocalDate] =
     (a: String) => tryCatch(LocalDate.parse(a, ISO_LOCAL_DATE))(s"Not a LocalDate $a")
 
-  implicit val fromStringToLocalTime: ConvertTo[LocalTime] =
+  given ConvertTo[LocalTime] =
     (a: String) => tryCatch(LocalTime.parse(a, ISO_LOCAL_TIME))(s"Not a LocalTime $a")
 
-  implicit val fromStringToOffsetDateTime: ConvertTo[OffsetDateTime] =
+  given ConvertTo[OffsetDateTime] =
     (s: String) => tryCatch(OffsetDateTime.parse(s, ISO_OFFSET_DATE_TIME))(s"Not a OffsetDateTime $s")
 
-  implicit val fromStringToOffsetTime: ConvertTo[OffsetTime] =
+  given ConvertTo[OffsetTime] =
     (s: String) => tryCatch(OffsetTime.parse(s, ISO_OFFSET_TIME))(s"Not a OffsetTime $s")
 
-  implicit val fromStringToZonedDateTime: ConvertTo[ZonedDateTime] =
+  given ConvertTo[ZonedDateTime] =
     (s: String) => tryCatch(ZonedDateTime.parse(s, ISO_ZONED_DATE_TIME))(s"Not a ZonedDateTime $s")
 
-  def convert[A](s: String)(implicit f: ConvertTo[A]): Either[ParseFailure, A] =
+  def convert[A](s: String)(given f: ConvertTo[A]): Either[ParseFailure, A] =
     f.to(s)
 }

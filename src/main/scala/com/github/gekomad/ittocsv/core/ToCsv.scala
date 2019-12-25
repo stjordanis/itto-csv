@@ -7,7 +7,7 @@
 //import com.github.gekomad.ittocsv.core.Types.implicits._
 //
 //import com.github.gekomad.ittocsv.parser.{IttoCSVFormat, StringToCsvField}
-//import shapeless.{::, Generic, HList, HNil, Lazy}
+////import shapeless.{::, Generic, HList, HNil, Lazy}
 //
 //trait CsvStringEncoder[A] {
 //  def encode(value: A): String
@@ -30,34 +30,34 @@
 //
 //  val csvConverter = StringToCsvField
 //
-//  implicit def stringEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[String] =
+//  given def stringEncoder(given IttoCSVFormat): CsvStringEncoder[String] =
 //    createEncoder(t => csvConverter.stringToCsvField(t))
 //
-//  implicit def intEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Int] =
+//  given def intEncoder(given IttoCSVFormat): CsvStringEncoder[Int] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def longEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Long] =
+//  given def longEncoder(given IttoCSVFormat): CsvStringEncoder[Long] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def doubleEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Double] =
+//  given def doubleEncoder(given IttoCSVFormat): CsvStringEncoder[Double] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def booleanEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Boolean] =
+//  given def booleanEncoder(given IttoCSVFormat): CsvStringEncoder[Boolean] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def byteEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Byte] =
+//  given def byteEncoder(given IttoCSVFormat): CsvStringEncoder[Byte] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def uuidEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[UUID] =
+//  given def uuidEncoder(given IttoCSVFormat): CsvStringEncoder[UUID] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def shortEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Short] =
+//  given def shortEncoder(given IttoCSVFormat): CsvStringEncoder[Short] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def floatEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Float] =
+//  given def floatEncoder(given IttoCSVFormat): CsvStringEncoder[Float] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def charEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[Char] =
+//  given def charEncoder(given IttoCSVFormat): CsvStringEncoder[Char] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
 //  import java.time.LocalDateTime
@@ -67,37 +67,37 @@
 //  import java.time.OffsetTime
 //  import java.time.ZonedDateTime
 //
-//  implicit def localDateEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[LocalDate] =
+//  given def localDateEncoder(given IttoCSVFormat): CsvStringEncoder[LocalDate] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def localDateTimeEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[LocalDateTime] =
+//  given def localDateTimeEncoder(given IttoCSVFormat): CsvStringEncoder[LocalDateTime] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def localTimeEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[LocalTime] =
+//  given def localTimeEncoder(given IttoCSVFormat): CsvStringEncoder[LocalTime] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def offsetDateTimeEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[OffsetDateTime] =
+//  given def offsetDateTimeEncoder(given IttoCSVFormat): CsvStringEncoder[OffsetDateTime] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def offsetTimeEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[OffsetTime] =
+//  given def offsetTimeEncoder(given IttoCSVFormat): CsvStringEncoder[OffsetTime] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
-//  implicit def zonedDateTimeEncoder(implicit csvFormat: IttoCSVFormat): CsvStringEncoder[ZonedDateTime] =
+//  given def zonedDateTimeEncoder(given IttoCSVFormat): CsvStringEncoder[ZonedDateTime] =
 //    createEncoder(t => csvConverter.stringToCsvField(t.toString))
 //
 //  ///////////////////////////
 //
-//  implicit val hnilEncoder: CsvStringEncoder[HNil] =
+//  given val hnilEncoder: CsvStringEncoder[HNil] =
 //    new CsvStringEncoder[HNil] {
 //      override def encode(value: HNil): String = ""
 //    }
 //
-//  implicit def genericEncoder[A, R](implicit gen: Generic.Aux[A, R], rEncoder: Lazy[CsvStringEncoder[R]]): CsvStringEncoder[A] =
-//    createEncoder { value =>
-//      rEncoder.value.encode(gen.to(value))
-//    }
+////  given def genericEncoder[A, R](given gen: Generic.Aux[A, R], rEncoder: Lazy[CsvStringEncoder[R]]): CsvStringEncoder[A] =
+////    createEncoder { value =>
+////      rEncoder.value.encode(gen.to(value))
+////    }
 //
-//  private def header[A: FieldNames](implicit enc: CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
+//  private def header[A: FieldNames](given CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
 //    if (csvFormat.printHeader) csvHeader[A] + csvFormat.recordSeparator else ""
 //
 //  /**
@@ -108,7 +108,7 @@
 //    * @return the CSV string encoded
 //    * {{{
 //    * import com.github.gekomad.ittocsv.core.ToCsv._
-//    * implicit val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
+//    * given val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
 //    *
 //    * case class Bar(a: String, b: Int)
 //    * assert(toCsv(Bar("侍", 42)) == "侍,42")
@@ -120,7 +120,7 @@
 //    * }}}
 //    *
 //    */
-//  def toCsv[A](a: A, printRecordSeparator: Boolean = false)(implicit enc: CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
+//  def toCsv[A](a: A, printRecordSeparator: Boolean = false)(given enc: CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
 //    (if (printRecordSeparator) csvFormat.recordSeparator else "") + enc.encode(a)
 //
 //  /**
@@ -129,13 +129,13 @@
 //    * @return the CSV string encoded
 //    * {{{
 //    * import com.github.gekomad.ittocsv.core.ToCsv._
-//    * implicit val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
+//    * given val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
 //    * case class Bar(a: String, b: Int)
 //    * assert(toCsv(List(Bar("abc", 42), Bar("def", 24))) == "abc,42,def,24")
 //    * }}}
 //    *
 //    */
-//  def toCsv[A](a: Seq[A])(implicit enc: CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
+//  def toCsv[A](a: Seq[A])(given CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
 //    a.map(value => toCsv(value)).mkString(csvFormat.delimeter.toString)
 //
 //  /**
@@ -143,28 +143,28 @@
 //    * @param csvFormat the [[com.github.gekomad.ittocsv.parser.IttoCSVFormat]] formatter
 //    * {{{
 //    * import com.github.gekomad.ittocsv.core.ToCsv._
-//    * implicit val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
+//    * given val csvFormat = com.github.gekomad.ittocsv.parser.IttoCSVFormat.default
 //    * case class Bar(a: String, b: Int)
 //    * assert(toCsvL(List(Bar("abc", 42), Bar("def", 24))) == "a,b\r\nabc,42\r\ndef,24")
 //    * }}}
 //    *
 //    */
-//  def toCsvL[A: FieldNames](a: Seq[A])(implicit enc: CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
+//  def toCsvL[A: FieldNames](a: Seq[A])(given CsvStringEncoder[A], csvFormat: IttoCSVFormat): String =
 //    header + a.map(value => toCsv(value)).mkString(csvFormat.recordSeparator)
 //
-//  implicit def hlistEncoder[H, T <: HList](implicit hEncoder: CsvStringEncoder[H], tEncoder: CsvStringEncoder[T], csvFormat: IttoCSVFormat): CsvStringEncoder[H :: T] = createEncoder {
+//  given def hlistEncoder[H, T <: HList](given hEncoder: CsvStringEncoder[H], tEncoder: CsvStringEncoder[T], csvFormat: IttoCSVFormat): CsvStringEncoder[H :: T] = createEncoder {
 //    case h :: HNil        => hEncoder.encode(h)
 //    case h :: Nil :: HNil => hEncoder.encode(h)
 //    case h :: t =>
 //      hEncoder.encode(h) ++ csvFormat.delimeter.toString + tEncoder.encode(t)
 //  }
 //
-//  import shapeless.{:+:, CNil, Coproduct, Inl, Inr}
+//  //import shapeless.{:+:, CNil, Coproduct, Inl, Inr}
 //
-//  implicit val cnilEncoder: CsvStringEncoder[CNil] = createEncoder(_ => throw new Exception("Inconceivable!"))
+//  given val cnilEncoder: CsvStringEncoder[CNil] = createEncoder(_ => throw new Exception("Inconceivable!"))
 //
-//  implicit def coproductEncoder[H, T <: Coproduct](
-//    implicit
+//  given def coproductEncoder[H, T <: Coproduct](
+//    given
 //    hEncoder: Lazy[CsvStringEncoder[H]],
 //    tEncoder: CsvStringEncoder[T]
 //  ): CsvStringEncoder[H :+: T] = createEncoder {

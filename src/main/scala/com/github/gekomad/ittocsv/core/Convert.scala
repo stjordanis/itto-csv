@@ -8,7 +8,7 @@ import com.github.gekomad.ittocsv.parser.IttoCSVFormat
 import com.github.gekomad.ittocsv.util.TryCatch.tryCatch
 import scala.util.Try
 
-type ValidatedNel[+A,+B] = Either[A,B]
+type ValidatedNel[+A,+B] = Either[A,B] // TODO
 
 trait Convert[V] {
   def parse(input: String): ValidatedNel[ParseFailure, V]
@@ -23,7 +23,7 @@ object Convert {
     def parse(input: String): ValidatedNel[ParseFailure, V] = body(input)
   }
 
-  implicit def optionLists[A: ConvertTo](implicit csvFormat: IttoCSVFormat): Convert[Option[List[A]]] =
+  given[A: ConvertTo](given csvFormat: IttoCSVFormat): Convert[Option[List[A]]] =
     Convert.instance { s =>
       Try {
         val x: List[A] = s.split(csvFormat.delimeter.toString, -1).toList.map {
@@ -35,13 +35,13 @@ object Convert {
       } //.toValidatedNel
     }
 
-  implicit def genericValidator[A](implicit csvFormat: IttoCSVFormat, validator: Validate[A]): Convert[A] =
+  given[A](given csvFormat: IttoCSVFormat, validator: Validate[A]): Convert[A] =
     Convert.instance(validator.validate(_)/*.toValidatedNel*/)
 
-  implicit def generic[A](implicit f: String => Either[ParseFailure, A]): Convert[A] =
+  given[A](given f: String => Either[ParseFailure, A]): Convert[A] =
     Convert.instance(f(_)/*.toValidatedNel*/)
 
-  implicit def lists[A: ConvertTo](implicit csvFormat: IttoCSVFormat): Convert[List[A]] =
+  given[A: ConvertTo](given csvFormat: IttoCSVFormat): Convert[List[A]] =
     Convert.instance { s =>
       Try {
         val x: List[A] = s
@@ -55,7 +55,7 @@ object Convert {
 
     }
 
-  implicit val optionBoolean: Convert[Option[Boolean]] =
+  given Convert[Option[Boolean]] =
     Convert.instance {
       case "" => (Right(None): Either[ParseFailure, Option[Boolean]])//.toValidatedNel
       case s  => tryCatch(Some(s.toBoolean))(s"Not a Boolean for input string: $s")//.toValidatedNel
@@ -95,8 +95,8 @@ object Convert {
     case s  => tryCatch(Some(s.toInt))(s"Not a Int for input string: $s")//.toValidatedNel
   }
 
-  implicit def gen[A](implicit conv: ConvertTo[A]): Convert[A] = Convert.instance(conv.to(_)/*.toValidatedNel*/)
+  given[A](given conv: ConvertTo[A]): Convert[A] = Convert.instance(conv.to(_)/*.toValidatedNel*/)
 
 //  implicit val strings: Convert[String] = Convert.instance(_.validNel)
-  implicit val strings: Convert[String] = Convert.instance(Right(_))
+  given Convert[String] = Convert.instance(Right(_))
 }
