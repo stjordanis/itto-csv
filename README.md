@@ -5,6 +5,11 @@ Itto-CSV is a pure scala library for working with the CSV format
 
 ## Using Library
 
+```
+git clone https://github.com/gekomad/scala-regex-collection.git --branch feature/dotty
+cd scala-regex-collection
+sbt publishLocal
+```
 ### Formatters
 The formatter determines how CSV will be generated
 
